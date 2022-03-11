@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const bodyParser = require('body-parser');
+var logger = require('morgan');
 
 const router = require('./routes');
 
@@ -14,6 +15,7 @@ app.set('views', path.join(__dirname, './views'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, './public')));
 
+app.use(logger('dev'));
 app.use('/', router());
 
 app.listen(port, () => {
