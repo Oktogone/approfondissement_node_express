@@ -8,7 +8,6 @@ module.exports = (param) => {
     });
 
     router.post('/', (req, rep) => {
-        console.log(req.file);
         rep.render('layout', { pageTitle: "Bienvenue", template: "image",
         nom: req.body.nom,
         });
