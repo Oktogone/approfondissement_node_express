@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('../config/multer');
 
 module.exports = (param) => {
 
@@ -7,10 +8,10 @@ module.exports = (param) => {
         rep.render('layout', { pageTitle: "Bienvenue", template: "index" });
     });
 
-    router.post('/', (req, rep) => {
-        console.log(req.file);
+    router.post('/', multer, (req, rep) => {
         rep.render('layout', { pageTitle: "Bienvenue", template: "image",
         nom: req.body.nom,
+        image: `${req.file.filename}`
         });
     });
 
